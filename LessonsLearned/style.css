@@ -6,5 +6,81 @@ body {
 }
 
 #cabeçalho {
-   top: 0px; 
+   top: 0px;
+   text-align: center;
+
+}
+
+#titulo  {
+    text-align: center;
+    font-size: 30px;
+}
+
+img { margin: 30px;
+
+
+}
+#licoes_aprendidas {
+    
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px;
+    color: cadetblue;
+
+}
+
+ol {
+  
+}
+
+#licoes_a_aprender {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 22px;
+    color: cadetblue;
+
+}
+
+ol {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+ul {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 18px;
+}
+
+.artigo {
+    line-height: 25px;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+article  {  line-height: 25px;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    float: left;
+
+h4 p {
+    line-height: 25px;
+    font-size: 50px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+/*verificar porque nao esta estilizando */
+
+}
+
+h4 {
+    font-size: 25px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+thead { text-align: left;
+        padding: px;
+
+    
+}
+
+th  {
+    padding: 15px;
+    
+    
 }
