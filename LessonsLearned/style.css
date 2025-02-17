@@ -11,12 +11,36 @@ body {
 
 }
 
+a {
+    text-align: left;
+    align-self: hover;
+    display: inline-block;
+    margin-left: 20px;
+    float: left;
+    text-decoration: none;
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    
+}
+
+header { 
+    background-color: cadetblue;
+    padding: 20px;
+    color: white;
+    
+       
+
+}
+
 #titulo  {
     text-align: center;
     font-size: 30px;
 }
 
-img { margin: 30px;
+img { margin: 5px;
+      width: 230px;
+      height: auto;
 
 
 }
@@ -24,30 +48,32 @@ img { margin: 30px;
     
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px;
-    color: cadetblue;
-
+    padding: 0;
+    display: inline-block;
+   
 }
 
-ol {
-  
-}
 
 #licoes_a_aprender {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 22px;
-    color: cadetblue;
+    display: inline-block;
+   
 
 }
 
-ol {
+h2 {
+    color: black;
+    font-size: 25px;
+    
+}
+
+ol, ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 18px;
+
 }
 
-ul {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 18px;
-}
 
 .artigo {
     line-height: 25px;
@@ -55,24 +81,26 @@ ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-article  {  line-height: 25px;
+article  {  
+    line-height: 25px;
     font-size: 18px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     float: left;
-
-h4 p {
-    line-height: 25px;
-    font-size: 50px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-/*verificar porque nao esta estilizando */
-
 }
 
 h4 {
     font-size: 25px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+h4 p {
+    line-height: 25px;
+    font-size: 60px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+}
+
+
 thead { text-align: left;
         padding: px;
 
@@ -84,3 +112,10 @@ th  {
     
     
 }
+
+h5 {
+    font-size: 15px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* falta o número 15 para baixo */ 
