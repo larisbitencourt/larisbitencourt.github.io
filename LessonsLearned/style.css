@@ -2,13 +2,15 @@
 body { 
     
     background-color: rgb(253,251,251,); 
+    
 
 }
 
 #cabeçalho {
    top: 0px;
    text-align: center;
-
+ 
+   
 }
 
 a {
@@ -17,10 +19,11 @@ a {
     display: inline-block;
     margin-left: 20px;
     float: left;
-    text-decoration: none;
-    color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bold;
+    text-decoration: none;
+    
+    
     
 }
 
@@ -28,9 +31,15 @@ header {
     background-color: cadetblue;
     padding: 20px;
     color: white;
+
     
        
 
+}
+
+.link-branco {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 #titulo  {
@@ -130,6 +139,8 @@ table {
     width: 48%;
     margin-top: 20px;
     margin-bottom: 10px;
+    font-size: 17px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 thead { text-align: left;
@@ -152,5 +163,6 @@ h5 {
 
 footer {
     clear: both;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 /* falta o número 15 para baixo */ 
