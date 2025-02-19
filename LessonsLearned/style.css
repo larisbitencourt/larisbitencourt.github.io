@@ -71,21 +71,46 @@ h2 {
 ol, ul {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 18px;
+    margin-left: 3%;
 
 }
 
-
-.artigo {
-    line-height: 25px;
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
 
 article  {  
     line-height: 25px;
     font-size: 18px;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 48%;
+    padding: 0;
+    display: inline-block;
     float: left;
+    vertical-align: top;
+    margin-left: 1%;
+  
+     
+ 
+  
+}
+
+aside {
+    line-height: 25px;
+    font-size: 18px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    width: 48%;
+    float: left;
+    display: inline-block;
+    float: right;
+    vertical-align: top;
+   
+   
+
+
+}
+
+section {
+    overflow: hidden;
+    margin-top: 20px;
+    clear: both;
 }
 
 h4 {
@@ -100,9 +125,16 @@ h4 p {
 
 }
 
+table {
+    clear: both;
+    width: 48%;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
 
 thead { text-align: left;
         padding: px;
+       
 
     
 }
@@ -118,4 +150,7 @@ h5 {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
+footer {
+    clear: both;
+}
 /* falta o número 15 para baixo */ 
