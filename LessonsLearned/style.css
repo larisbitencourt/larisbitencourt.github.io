@@ -1,185 +1,161 @@
-
-body { 
-    
-    background-color: rgb(253,251,251,); 
-    
-
+body {
+  background-color: rgb(253, 251, 251);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin: 0;
 }
 
 #cabeçalho {
-   top: 0px;
-   text-align: center;
-
- 
-   
+  text-align: center;
 }
 
 a {
-    text-align: left;
-    align-self: hover;
-    display: inline-block;
-    margin-left: 20px;
-    float: left;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: bold;
-    text-decoration: none;
-    
-    
-    
+  text-align: left;
+  align-self: hover;
+  display: inline-block;
+  float: left;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: bold;
+  text-decoration: none;
+  margin-left: 0;
 }
 
-header { 
-    background-color: cadetblue;
-    padding: 20px;
-    color: white;
-    position: fixed;
-    width: 100%;
-    top: 0;
+header {
+  background-color: cadetblue;
+  padding: 20px;
+  color: white;
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
 
-    
-       
-
+nav ul {
+  margin-left: 10px;
+  padding: 0%;
+  list-style: none;
 }
 
 .link-branco {
-    color: white;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-#titulo  {
-    text-align: center;
-    font-size: 30px;
+#titulo {
+  text-align: center;
+  font-size: 30px;
 }
 
-img { margin: 5px;
-      width: 230px;
-      height: auto;
-
-
+img {
+  margin: 5px;
+  width: 230px;
+  height: auto;
 }
 #licoes_aprendidas {
-    
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 22px;
-    padding: 0;
-    display: inline-block;
-   
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 22px;
+  padding: 0;
+  display: inline-block;
 }
 
-
 #licoes_a_aprender {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 22px;
-    display: inline-block;
-   
-
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 22px;
+  display: inline-block;
 }
 
 h2 {
-    color: black;
-    font-size: 25px;
-    
+  color: black;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-left: 15px;
 }
 
-ol, ul {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 18px;
-    margin-left: 3%;
-
+ol,
+ul {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 18px;
+  margin-left: 3%;
 }
 
-
-article  {  
-    line-height: 25px;
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 48%;
-    padding: 0;
-    display: inline-block;
-    float: left;
-    vertical-align: top;
-    margin-left: 1%;
-    margin-right: 3%;
-    margin-bottom: 10px;
-  
-     
- 
-  
+article {
+  line-height: 25px;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 48%;
+  padding: 0;
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  margin-left: 1%;
+  margin-right: 3%;
+  margin-bottom: 10px;
 }
 
 aside {
-    line-height: 25px;
-    font-size: 18px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    width: 48%;
-    float: left;
-    display: inline-block;
-    float: left;
-    vertical-align: top;
-    margin-left: 0;
-    margin-bottom: 10px;
-   
- 
-   
-   
-
-
+  line-height: 25px;
+  font-size: 18px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 48%;
+  float: left;
+  display: inline-block;
+  float: left;
+  vertical-align: top;
+  margin-left: 0;
+  margin-bottom: 10p;
 }
 
 section {
-    overflow: hidden;
-    margin-top: 20px;
-    clear: both;
-    padding-top: 140px;
-    clear: both;
-  
+  overflow: hidden;
+  margin-top: 20px;
+  clear: both;
+  padding-top: 140px;
+  clear: both;
 }
 
 h4 {
-    font-size: 25px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 25px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h4 p {
-    line-height: 25px;
-    font-size: 60px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-
+  line-height: 25px;
+  font-size: 60px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 table {
-    clear: both;
-    width: 48%;
-    margin-top: 0%;
-    margin-bottom: 10px;
-    font-size: 17px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  clear: both;
+  width: 48%;
+  margin-top: 0%;
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-thead { text-align: left;
-        padding: px;
-       
-
-    
+caption {
+  text-align: left;
+  margin-left: 10px;
 }
 
-th  {
-    padding: 15px;
-    
-    
+thead {
+  text-align: left;
+  padding: px;
+}
+
+th {
+  padding: 15px;
 }
 
 h5 {
-    font-size: 15px;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 15px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 footer {
-    clear: both;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+  clear: both;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-html, body {
-    margin: 0;
-
+html,
+body {
+  margin: 0;
 }
