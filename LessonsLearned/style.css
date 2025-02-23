@@ -4,7 +4,7 @@ body {
   margin: 0;
 }
 
-#cabeçalho {
+#cabecalho {
   text-align: center;
 }
 
@@ -25,7 +25,7 @@ header {
   color: white;
   position: fixed;
   width: 100%;
-  top: 0;
+  top: 0px;
 }
 
 nav ul {
