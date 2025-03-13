@@ -61,72 +61,139 @@ highestCount();
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
 
- ///REFAZER
+  const distCat1 = Math.abs(mouse - cat1);
+  const distCat2 = Math.abs(mouse - cat2);
 
+  if (distCat1 < distCat2) {
+    return "cat1";
+  } else if (distCat2 < distCat1) {
+    return "cat2";
+  } else {
+    return "os gatos trombam e o rato foge";
+  }
 }
- 
-catAndMouse(5, 5, 5);  
+
+console.log(catAndMouse(5, 3, 7)); 
+console.log(catAndMouse(4, 3, 2));
+console.log(catAndMouse(8, 3, 10)); 
+  
 
 // Desafio 8
 function fizzBuzz() {
-
   const arrayNumerosDivisiveis = [2, 15, 7, 9, 45];
 
   let result1 = [];
 
   for (let index1 = 0; index1 < arrayNumerosDivisiveis.length; index1 += 1) {
-
-  if (arrayNumerosDivisiveis[index1] % 3 === 0 && arrayNumerosDivisiveis[index1] % 5 === 0) {
-    result1.push("fizzbuzz"); 
-  }
-  
- else if (arrayNumerosDivisiveis [index1] %3 === 0) {
-    result1.push('fizz');
-  }
-
-  else if (arrayNumerosDivisiveis [index1] %5 === 0) {
-        result1.push('buzz');
-      } 
-      
-else {  result1.push('bug!') 
-
-}
-
-      
+    if (
+      arrayNumerosDivisiveis[index1] % 3 === 0 &&
+      arrayNumerosDivisiveis[index1] % 5 === 0
+    ) {
+      result1.push("fizzbuzz");
+    } else if (arrayNumerosDivisiveis[index1] % 3 === 0) {
+      result1.push("fizz");
+    } else if (arrayNumerosDivisiveis[index1] % 5 === 0) {
+      result1.push("buzz");
+    } else {
+      result1.push("bug!");
+    }
   }
   return result1;
-
 }
 
-console.log (fizzBuzz());
+console.log(fizzBuzz());
 
 // Desafio 9
-function encode() {
+function encode(string) {
+  return string
+    .replace(/a/g, "1")
+    .replace(/e/g, "2")
+    .replace(/i/g, "3")
+    .replace(/o/g, "4")
+    .replace(/u/g, "5");
+}
+console.log(encode("O cravo e a rosa"));
 
-  
+function decode(string2) {
+  return string2
+    .replace(/1/g, "a")
+    .replace(/2/g, "e")
+    .replace(/3/g, "i")
+    .replace(/4/g, "o")
+    .replace(/5/g, "u");
 }
-function decode() {
-  // seu código aqui
-}
+
+console.log(decode("O cr1v4 2 1 r4s1"));
 
 // Desafio 10
-function techList() {
-  // seu código aqui
+
+
+const tech = ["React", "Jest", "HTML", "CSS", "JavaScript"];
+
+const name1 = "Larissa";
+
+function techList(tech, name1) {
+
+  if (tech.length === 0) {
+    return "Vazio!";
+  }
+
+  tech.sort();
+
+  return tech.map((techItem) => {
+    return { tech: techItem, name: name1 };
+  });
 }
+
+console.log(techList(tech, name1));
 
 // Desafio 11
 function generatePhoneNumber() {
-  // seu código aqui
+
+  const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1];
+  let telefone = [];
+
+  for (let index3 = 0; index3 < numeros.length; index3 += 1)
+
+    
+
+  if ( numeros < 0, numeros > 9, numeros ) {
+
+    telefone = "não é possóvel gerar um número de telefonme com esses valores"
+
+  } else if ( numeros != 11 ) {
+
+    telefone = "Array com número incorreto."
+  }
+
+  return numeros.find ( telefone = ( )
+
+  )  REFAZER 
+
 }
 
 // Desafio 12
-function triangleCheck() {
-  // seu código aqui
+function triangleCheck(lineA, lineB, lineC) {
+
+  if (lineA < lineB + lineC && lineA > Math.abs(lineB - lineC) &&
+      lineB < lineA + lineC && lineB > Math.abs(lineA - lineC) &&
+      lineC < lineA + lineB && lineC > Math.abs(lineA - lineB)) {
+    return true;
+  } else {
+    return false;
+  }
 }
+
+console.log(triangleCheck(2, 3, 4)); 
+
+
+
 
 // Desafio 13
 function hydrate() {
-  // seu código aqui
+ 
+
+
 }
 
 module.exports = {
