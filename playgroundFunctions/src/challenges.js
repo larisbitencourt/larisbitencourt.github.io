@@ -60,7 +60,6 @@ highestCount();
 
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
-
   const distCat1 = Math.abs(mouse - cat1);
   const distCat2 = Math.abs(mouse - cat2);
 
@@ -73,10 +72,9 @@ function catAndMouse(mouse, cat1, cat2) {
   }
 }
 
-console.log(catAndMouse(5, 3, 7)); 
+console.log(catAndMouse(5, 3, 7));
 console.log(catAndMouse(4, 3, 2));
-console.log(catAndMouse(8, 3, 10)); 
-  
+console.log(catAndMouse(8, 3, 10));
 
 // Desafio 8
 function fizzBuzz() {
@@ -127,13 +125,11 @@ console.log(decode("O cr1v4 2 1 r4s1"));
 
 // Desafio 10
 
-
 const tech = ["React", "Jest", "HTML", "CSS", "JavaScript"];
 
 const name1 = "Larissa";
 
 function techList(tech, name1) {
-
   if (tech.length === 0) {
     return "Vazio!";
   }
@@ -148,53 +144,74 @@ function techList(tech, name1) {
 console.log(techList(tech, name1));
 
 // Desafio 11
-function generatePhoneNumber() {
-
-  const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1];
+function generatePhoneNumber(numeros) {
+  numeros = [3, 1, 9, 9, 9, 9, 7, 0, 2, 2, 7];
   let telefone = [];
 
-  for (let index3 = 0; index3 < numeros.length; index3 += 1)
-
-    
-
-  if ( numeros < 0, numeros > 9, numeros ) {
-
-    telefone = "não é possóvel gerar um número de telefonme com esses valores"
-
-  } else if ( numeros != 11 ) {
-
-    telefone = "Array com número incorreto."
+  if (numeros.length !== 11) {
+    return "Array com número incorreto.";
   }
 
-  return numeros.find ( telefone = ( )
+  for (let index3 = 0; index3 < numeros.length; index3 += 1) {
+    if (numeros[index3] < 0 || numeros[index3] > 9) {
+      return "não é possóvel gerar um número de telefonme com esses valores";
+    }
+  }
 
-  )  REFAZER 
+  telefone.unshift("(");
+  telefone.push(numeros[0]);
+  telefone.push(numeros[1]);
+  telefone.push(")");
+  telefone.push(numeros[2], numeros[3], numeros[4], numeros[5], numeros[6]);
+  telefone.push("-");
+  telefone.push(numeros[7], numeros[8], numeros[9], numeros[10]);
 
+  return telefone.join("");
 }
+
+console.log(generatePhoneNumber());
 
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
-
-  if (lineA < lineB + lineC && lineA > Math.abs(lineB - lineC) &&
-      lineB < lineA + lineC && lineB > Math.abs(lineA - lineC) &&
-      lineC < lineA + lineB && lineC > Math.abs(lineA - lineB)) {
+  if (
+    lineA < lineB + lineC &&
+    lineA > Math.abs(lineB - lineC) &&
+    lineB < lineA + lineC &&
+    lineB > Math.abs(lineA - lineC) &&
+    lineC < lineA + lineB &&
+    lineC > Math.abs(lineA - lineB)
+  ) {
     return true;
   } else {
     return false;
   }
 }
 
-console.log(triangleCheck(2, 3, 4)); 
-
-
-
+console.log(triangleCheck(2, 3, 4));
 
 // Desafio 13
-function hydrate() {
- 
+function hydrate(stringBar) {
+  const r = /\d+/g;
+
+  const array = stringBar.match(r);
+  // [ '1', '9', '4']
+
+  let resultado = 0;
+
+  for (let i = 0; i < array.length; i += 1) {
+    resultado += parseInt(array[i]);
+  }
+
+  if (resultado === 1) {
+    return resultado + " copo de água";
+  }
+   
+  return resultado + " copos de água";
 
 
 }
+
+console.log(hydrate("1 cachaça, 4 cervejas e 7 copo de vinho"));
 
 module.exports = {
   calcArea,
