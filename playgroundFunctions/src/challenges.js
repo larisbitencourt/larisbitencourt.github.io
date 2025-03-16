@@ -1,12 +1,13 @@
 // Desafio 1
-function compareTrue(a, b) {
-  return a % 2 === 0 && b % 2 === 0;
+function compareTrue(valorA, valorB) {
+  if (valorA === true && valorB === false) {
+    return false;
+  }
+
+  return true;
 }
 
-console.log(compareTrue(4, 6));
-console.log(compareTrue(2, 3));
-console.log(compareTrue(7, 8));
-console.log(compareTrue(6, 10));
+console.log(compareTrue());
 
 // Desafio 2
 function calcArea(base, height) {
@@ -22,13 +23,13 @@ function splitSentence(mySentence) {
 console.log(splitSentence("Eu amo estudar"));
 
 // Desafio 4
-function concatName() {
+function concatName(lista) {
   lista = ["Phoebe", "Joey", "Ross", "Rachel", "Monica", "Chandler"];
 
   const primeiro = lista[0];
   const ultimo = lista[lista.length - 1];
 
-  return ` O primeiro item: ${primeiro}. O último item: ${ultimo}`;
+  return `${ultimo}, ${primeiro}`;
 }
 
 console.log(concatName());
@@ -44,19 +45,20 @@ function footballPoints(wins, ties) {
 console.log(footballPoints(2, 5));
 
 // Desafio 6
-function highestCount() {
-  arrayDeNumeros = [9, 1, 2, 3, 9, 5, 7];
-
+function highestCount(arrayDeNumeros) {
+  let maiorNumero = Math.max(...arrayDeNumeros);
   let result = 0;
 
   for (let index = 0; index < arrayDeNumeros.length; index += 1) {
-    if (arrayDeNumeros[index] === 9) result++;
+    if (arrayDeNumeros[index] === maiorNumero) {
+      result++;
+    }
   }
 
-  console.log(result);
+  return result;
 }
 
-highestCount();
+console.log(highestCount([9, 1, 2, 3, 9, 5, 7]));
 
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
@@ -77,8 +79,9 @@ console.log(catAndMouse(4, 3, 2));
 console.log(catAndMouse(8, 3, 10));
 
 // Desafio 8
-function fizzBuzz() {
-  const arrayNumerosDivisiveis = [2, 15, 7, 9, 45];
+function fizzBuzz(arrayNumerosDivisiveis) {
+
+ // const arrayNumerosDivisiveis = [2, 15, 7, 9, 45];
 
   let result1 = [];
 
@@ -99,7 +102,7 @@ function fizzBuzz() {
   return result1;
 }
 
-console.log(fizzBuzz());
+console.log(fizzBuzz([2, 15, 7, 9, 45]));
 
 // Desafio 9
 function encode(string) {
@@ -205,10 +208,8 @@ function hydrate(stringBar) {
   if (resultado === 1) {
     return resultado + " copo de água";
   }
-   
+
   return resultado + " copos de água";
-
-
 }
 
 console.log(hydrate("1 cachaça, 4 cervejas e 7 copo de vinho"));
