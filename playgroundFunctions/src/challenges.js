@@ -24,15 +24,13 @@ console.log(splitSentence("Eu amo estudar"));
 
 // Desafio 4
 function concatName(lista) {
-  lista = ["Phoebe", "Joey", "Ross", "Rachel", "Monica", "Chandler"];
-
   const primeiro = lista[0];
   const ultimo = lista[lista.length - 1];
 
   return `${ultimo}, ${primeiro}`;
 }
 
-console.log(concatName());
+console.log(concatName(["Phoebe", "Joey", "Ross", "Rachel", "Monica", "Chandler"]));
 
 // Desafio 5
 function footballPoints(wins, ties) {
@@ -58,7 +56,7 @@ function highestCount(arrayDeNumeros) {
   return result;
 }
 
-console.log(highestCount([9, 1, 2, 3, 9, 5, 7]));
+console.log(highestCount([9, 10, 10, 10, 2, 3, 9, 5, 7]));
 
 // Desafio 7
 function catAndMouse(mouse, cat1, cat2) {
@@ -148,7 +146,7 @@ console.log(techList(tech, name1));
 
 // Desafio 11
 function generatePhoneNumber(numeros) {
-  numeros = [3, 1, 9, 9, 9, 9, 7, 0, 2, 2, 7];
+  //numeros = [3, 1, 9, 9, 9, 9, 7, 0, 2, 2, 7];
   let telefone = [];
 
   if (numeros.length !== 11) {
@@ -172,7 +170,7 @@ function generatePhoneNumber(numeros) {
   return telefone.join("");
 }
 
-console.log(generatePhoneNumber());
+console.log(generatePhoneNumber([3, 1, 9, 9, 9, 9, 7, 0, 2, 2, 7]));
 
 // Desafio 12
 function triangleCheck(lineA, lineB, lineC) {
