@@ -1,0 +1,70 @@
+#color-palette { 
+
+    display: flex;
+}
+
+.borda { 
+    border: 1px solid black;
+  
+}
+
+.quadradoUm { 
+    border: 1px solid black;
+    height: 90px;
+    width: 80px;
+    background-color: black;
+    margin-right: 5px;
+ 
+    
+
+}
+
+.quadradoDois {
+
+    border: 1px solid black;
+    height: 90px;
+    width: 80px;
+    background-color: rgb(121, 158, 238);
+    margin-right: 5px;
+    
+
+}
+
+.quadradoTres {
+
+    border: 1px solid black;
+    height: 90px;
+    width: 80px;
+    background-color: rgb(235, 235, 131);
+    margin-right: 5px;
+
+}
+
+.quadradoQuatro {
+
+    border: 1px solid black;
+    height: 90px;
+    width: 80px;
+    background-color: rgb(140, 31, 31);
+ 
+   
+}
+
+#pixel-board { 
+
+
+
+}
+
+.pixel {
+    
+    border: 1px solid black;
+    height: 40px;
+    width: 40px;
+
+
+}
+
+.vertical {
+
+}
