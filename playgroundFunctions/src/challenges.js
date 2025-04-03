@@ -30,7 +30,9 @@ function concatName(lista) {
   return `${ultimo}, ${primeiro}`;
 }
 
-console.log(concatName(["Phoebe", "Joey", "Ross", "Rachel", "Monica", "Chandler"]));
+console.log(
+  concatName(["Phoebe", "Joey", "Ross", "Rachel", "Monica", "Chandler"])
+);
 
 // Desafio 5
 function footballPoints(wins, ties) {
@@ -78,8 +80,7 @@ console.log(catAndMouse(8, 3, 10));
 
 // Desafio 8
 function fizzBuzz(arrayNumerosDivisiveis) {
-
- // const arrayNumerosDivisiveis = [2, 15, 7, 9, 45];
+  // const arrayNumerosDivisiveis = [2, 15, 7, 9, 45];
 
   let result1 = [];
 
