@@ -1,3 +1,7 @@
+#title {
+    text-align: center;
+}
+
 #color-palette { 
 
     display: flex;
@@ -11,14 +15,17 @@
 .color {
     border: 1px solid black;
     display: inline-block;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
 }
 
-.borda { 
+/* .borda { 
     border: 1px solid black;
   
-}
+} */
 
-.quadradoUm { 
+/* .quadradoUm { 
     border: 1px solid black;
     height: 90px;
     width: 80px;
@@ -58,14 +65,13 @@
     background-color: rgb(140, 31, 31);
  
    
-}
+} */
 
 #pixel-board { 
     margin-left: auto;
     margin-right: auto;
     text-align: center;
     font-size: 0;
-    display: flex;
     display: grid;
   
 
@@ -85,6 +91,16 @@
 
 }
 
-.vertical {
+#section-clean{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  #button-clean {
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-}
+ 
+

@@ -24,8 +24,8 @@ function generatorRgbColors() {
 }
 
 for (let index = 0; index < colorNumber; index += 1) {
-  paletteColors[index] = document.createElemente("div");
-  colorPalette.appendChild(colorPalette[index]).className = "color";
+  paletteColors[index] = document.createElement("div");
+  paletteColors.appendChild(paletteColors[index]).className = "color";
 }
 
 // o primeiro elemento será preto
@@ -40,8 +40,19 @@ paletteColors[0].classList.add("selected");
 
 paletteColors[1].style.backgroundColor = generatorRgbColors();
 paletteColors[2].style.backgroundColor = generatorRgbColors();
-paletteColors[3].style.backgroundColor = sgeneratorRgbColors();
-paletteColors[4].style.backgroundColor = sgeneratorRgbColors();
+paletteColors[3].style.backgroundColor = generatorRgbColors();
+paletteColors[4].style.backgroundColor = generatorRgbColors();
+
+// latgura do quadro
+
+pixelBoard.style.width = "40px";
+pixelBoard.style.height = "40px";
+
+let pixelSize = tamanhoPixel * tamanhoPixel;
+for (let index = 0; index < pixelSize; index += 1) {
+  quadroPixel[index] = document.createElement("div");
+  pixelBoard.appendChild(quadroPixel[index]).className = "pixel";
+}
 
 // gerar o quadro de pixel
 
@@ -56,3 +67,95 @@ function pixelInit(pixelNumber) {
     pixelBoard.appendChild(quadroPixel[index]).className = "pixel";
   }
 }
+
+// remover a classe selected
+
+function removeColorSelected() {
+  paletteColors.forEach((color) => {
+    if (color.className.includes('selected')) {
+      color.classList.remove('selected');
+    }
+  });
+}
+
+// forEach itera sob os elementos da paletteColors.
+// Ele executa a função fornecida para cada item da coleção.
+// A função fornecida recebe o parâmetro color, que é cada elemento da paleta de cores.
+
+function colorSelect(color) {
+  if (!color.target.className.includes('selected')) {
+    cleanColorSelected();
+    color.target.classList.add('selected');
+  }
+}
+
+paletteColors.forEach((color) => {
+  color.addEventListener('click', colorSelect);
+});
+
+// mudança de cor nos pixels
+
+
+function changeColor(valor) {
+  const pixel = valor;
+  const elementColor = document.querySelector('.selected').style.backgroundColor;
+  pixel.target.style.backgroundColor = elementColor;
+}
+
+quadroṔixel.forEach((pixel) => {
+  pixel.addEventListener('click', changeColor);
+});
+
+// alterar a cor ao clicar no pixel
+
+function pixelInit() {
+  quadroPixel.forEach((pixel) => {
+    pixel.addEventListener('click', changeColor);
+  });
+}
+
+
+// botão
+
+function clearBoard() {
+  quadroPixel.forEach((pixel) => {
+    const whitePixel = pixel;
+    whitePixel.style.backgroundColor = 'white';
+  });
+}
+
+button.addEventListener('click', clearBoard);
+
+
+function finalClean() {
+  const finalPixel = lastLinePixel * lastLinePixel;
+  for (let index = 0; index < finalPixel; index += 1) {
+    pixelBoard.removeChild(quadroPixel[index]);
+  }
+  quadroPixel = [];   //ver se precisa alterar de lugar essa função
+}
+
+// alterar tamanhao quadro pixel
+
+function changeBoardSize(lineNumber) {
+  finalClean();
+  pixelInit(lineNumber);
+  pixelInit();
+}
+
+function inputSize() {
+  tamanhoPixel = documentElementById('tamanho-borda');  // ???
+  if (tamanhoPixel.length === 0) {
+    alert('Board inválido!');
+  } else if (tamanhoPixel < 5) {
+    alert('Board inválido! Mínimo 5x5');
+  } else if (tamanhoPixel > 20) {
+    alert('Board inválido! Limite de 20x20');
+  } else {
+    inputBoardSize(tamanhoPixel);
+  }
+}
+
+buttonInput.addEventListener('click', inputSize);
+
+
