@@ -6,60 +6,21 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <link rel="stylesheet" href="style.css" />
     <title>Paleta de Cores</title>
-    <script src="./script.js"></script>
+    <script src="./script.js" defer></script>
+
+    <!-- Defer carrega o JS depois do HTML  -->
   </head>
   <body>
     <h1 id="title">Paleta de Cores</h1>
+    <section id="color-palette" class="color"></section>
+    <section id="pixel-board"></section>
 
-    <section id="color-palette" class="color"> 
+    <input id="tamanho-borda" min="5" type="number" />
 
-      <div class="quadradoUm" class="selected" >Preto</div>
+    <button id="gerar-bordas">Gerar Borda</button>
 
-      <div class="quadradoDois">Azul</div>
-
-      <div class="quadradoTres">Amarelo</div>
-
-      <div class="quadradoQuatro">Vermelho</div>
-
+    <section id="section-clean">
+      <button id="button-clean">Limpar</button>
     </section>
-
-   
-
-
-      <section id="pixel-board">
-
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>
-        <div class="pixel"></div>       
-       
-       
-        </section>
-  
-        <input id="tamanho-borda" min="5" >
-      
-      </input> 
-  
-      <button id="gerar-bordas"></button>
-  
-      <section id="section-limpar">
-          <button id="button-limpar"> Limpar  </button>
-  
-  
-      </section>
-  
-      
-      </section>
-
-
-
-
-</body>
-
-
-
-
-
-
+  </body>
 </html>
