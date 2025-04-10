@@ -7,20 +7,16 @@
     <link rel="stylesheet" href="style.css" />
     <title>Paleta de Cores</title>
     <script src="./script.js" defer></script>
-
-    <!-- Defer carrega o JS depois do HTML  -->
   </head>
   <body>
     <h1 id="title">Paleta de Cores</h1>
-    <section id="color-palette" class="color"></section>
+    <section id="color-palette"></section>
+    
+    <input type="number" id="board-size" min="5" max="50" placeholder="Tamanho do quadro (5-50)">
+    <button id="generate-board">VQV</button>
+
+    <button id="button-clean">Limpar</button>
+
     <section id="pixel-board"></section>
-
-    <input id="tamanho-borda" min="5" type="number" />
-
-    <button id="gerar-bordas">Gerar Borda</button>
-
-    <section id="section-clean">
-      <button id="button-clean">Limpar</button>
-    </section>
   </body>
 </html>

@@ -1,106 +1,38 @@
 #title {
     text-align: center;
-}
-
-#color-palette { 
-
+  }
+  
+  #color-palette { 
     display: flex;
-    width: 50%;
+    justify-content: center;
     margin-bottom: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-}
-
-.color {
+  }
+  
+  .color {
     border: 1px solid black;
-    display: inline-block;
     width: 30px;
     height: 30px;
     cursor: pointer;
-}
-
-/* .borda { 
-    border: 1px solid black;
+  }
   
-} */
-
-/* .quadradoUm { 
-    border: 1px solid black;
-    height: 90px;
-    width: 80px;
-    background-color: black;
-    margin-right: 5px;
- 
-    
-
-}
-
-.quadradoDois {
-
-    border: 1px solid black;
-    height: 90px;
-    width: 80px;
-    background-color: rgb(121, 158, 238);
-    margin-right: 5px;
-    
-
-}
-
-.quadradoTres {
-
-    border: 1px solid black;
-    height: 90px;
-    width: 80px;
-    background-color: rgb(235, 235, 131);
-    margin-right: 5px;
-
-}
-
-.quadradoQuatro {
-
-    border: 1px solid black;
-    height: 90px;
-    width: 80px;
-    background-color: rgb(140, 31, 31);
- 
-   
-} */
-
-#pixel-board { 
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    font-size: 0;
+  #pixel-board { 
+    margin: 20px auto;
     display: grid;
+    grid-template-columns: repeat(5, 40px);
+    grid-gap: 1px;
+  }
   
-
-
-
-
-}
-
-.pixel {
-    
-    border: 1px solid black;
-    height: 40px;
+  .pixel {
     width: 40px;
-    display: inline-block;
+    height: 40px;
     background-color: white;
-
-
-}
-
-#section-clean{
-    text-align: center;
-    margin-bottom: 20px;
+    border: 1px solid black;
+    cursor: pointer;
   }
   
   #button-clean {
-    width: 100px;
-    margin-left: auto;
-    margin-right: auto;
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
   }
-
- 
-
+  
