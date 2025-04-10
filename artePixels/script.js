@@ -1,75 +1,61 @@
 const pixelBoard = document.getElementById("pixel-board");
 const colorPalette = document.getElementById("color-palette");
+const button = document.getElementById('button-clean');
 const paletteColors = [];
-const colorNumber = 5;
+const colorNumber = 4; 
 let quadroPixel = [];
 let tamanhoPixel = 5;
-let quadradoPixel = tamanhoPixel;
 
-// gerar valor aleatório entre 0 e 255
-
+// Função para gerar valor aleatório entre 0 e 255
 function generatorColors() {
   return Math.ceil(Math.random() * 255);
 }
 
-// gerar cor RGB aleatória
-
+// Função para gerar cor RGB aleatória
 function generatorRgbColors() {
-  const red = randomColor();
-  const green = randomColor();
-  const blue = randomColor();
-
-  const rgb = `rgb(${red}, ${green}, ${blue})`;
-  return rgb;
+  const red = generatorColors();
+  const green = generatorColors();
+  const blue = generatorColors();
+  return `rgb(${red}, ${green}, ${blue})`;
 }
 
+// Criando a paleta de cores
 for (let index = 0; index < colorNumber; index += 1) {
   paletteColors[index] = document.createElement("div");
-  paletteColors.appendChild(paletteColors[index]).className = "color";
+  paletteColors[index].className = "color";
+  colorPalette.appendChild(paletteColors[index]);
 }
 
-// o primeiro elemento será preto
-
-paletteColors[0].style.backgroundColor = "black";
-
-// adicionando a classe select ao primeiro elemento da paleta
-
-paletteColors[0].classList.add("selected");
-
-// gerar cores aleatórias para os outros quadrados
+// Definindo as cores da paleta
+paletteColors[0].style.backgroundColor = "black"; // Cor preta
+paletteColors[0].classList.add("selected"); // Definindo a cor preta como selecionada
 
 paletteColors[1].style.backgroundColor = generatorRgbColors();
 paletteColors[2].style.backgroundColor = generatorRgbColors();
 paletteColors[3].style.backgroundColor = generatorRgbColors();
-paletteColors[4].style.backgroundColor = generatorRgbColors();
 
-// latgura do quadro
-
-pixelBoard.style.width = "40px";
-pixelBoard.style.height = "40px";
-
-let pixelSize = tamanhoPixel * tamanhoPixel;
-for (let index = 0; index < pixelSize; index += 1) {
-  quadroPixel[index] = document.createElement("div");
-  pixelBoard.appendChild(quadroPixel[index]).className = "pixel";
-}
-
-// gerar o quadro de pixel
-
+// Função para inicializar os pixels do quadro
 function pixelInit(pixelNumber) {
-  quadradoPixel = pixelNumber;
-  pixelBoard.style.width = "40px";
-  pixelBoard.style.width = "40px";
+  quadroPixel = [];
+  pixelBoard.innerHTML = ''; // Limpar o conteúdo anterior
 
+  // Ajustando a largura e altura do pixelBoard
+  pixelBoard.style.gridTemplateColumns = `repeat(${pixelNumber}, 40px)`;
+
+  // Criando os pixels
   let pixelSize = pixelNumber * pixelNumber;
   for (let index = 0; index < pixelSize; index += 1) {
-    quadroPixel[index] = document.createElement("div");
-    pixelBoard.appendChild(quadroPixel[index]).className = "pixel";
+    const pixel = document.createElement("div");
+    pixel.className = "pixel";
+    pixelBoard.appendChild(pixel);
+    quadroPixel.push(pixel);
+
+    // Adicionando o evento de clique para mudar a cor do pixel
+    pixel.addEventListener('click', changeColor);
   }
 }
 
-// remover a classe selected
-
+// Função para remover a classe 'selected' da paleta
 function removeColorSelected() {
   paletteColors.forEach((color) => {
     if (color.className.includes('selected')) {
@@ -78,13 +64,10 @@ function removeColorSelected() {
   });
 }
 
-// forEach itera sob os elementos da paletteColors.
-// Ele executa a função fornecida para cada item da coleção.
-// A função fornecida recebe o parâmetro color, que é cada elemento da paleta de cores.
-
+// Função para selecionar a cor ao clicar na paleta
 function colorSelect(color) {
   if (!color.target.className.includes('selected')) {
-    cleanColorSelected();
+    removeColorSelected();
     color.target.classList.add('selected');
   }
 }
@@ -93,69 +76,41 @@ paletteColors.forEach((color) => {
   color.addEventListener('click', colorSelect);
 });
 
-// mudança de cor nos pixels
-
-
-function changeColor(valor) {
-  const pixel = valor;
+// Função para mudar a cor do pixel
+function changeColor(event) {
+  const pixel = event.target;
   const elementColor = document.querySelector('.selected').style.backgroundColor;
-  pixel.target.style.backgroundColor = elementColor;
+  pixel.style.backgroundColor = elementColor;
 }
 
-quadroṔixel.forEach((pixel) => {
-  pixel.addEventListener('click', changeColor);
-});
-
-// alterar a cor ao clicar no pixel
-
-function pixelInit() {
-  quadroPixel.forEach((pixel) => {
-    pixel.addEventListener('click', changeColor);
-  });
-}
-
-
-// botão
-
+// Função para limpar o quadro de pixels
 function clearBoard() {
   quadroPixel.forEach((pixel) => {
-    const whitePixel = pixel;
-    whitePixel.style.backgroundColor = 'white';
+    pixel.style.backgroundColor = 'white';
   });
 }
 
 button.addEventListener('click', clearBoard);
 
-
-function finalClean() {
-  const finalPixel = lastLinePixel * lastLinePixel;
-  for (let index = 0; index < finalPixel; index += 1) {
-    pixelBoard.removeChild(quadroPixel[index]);
-  }
-  quadroPixel = [];   //ver se precisa alterar de lugar essa função
-}
-
-// alterar tamanhao quadro pixel
-
+// Função para alterar o tamanho do quadro
 function changeBoardSize(lineNumber) {
-  finalClean();
   pixelInit(lineNumber);
-  pixelInit();
 }
 
+// Função para pegar o tamanho do quadro a partir do input
 function inputSize() {
-  tamanhoPixel = documentElementById('tamanho-borda');  // ???
-  if (tamanhoPixel.length === 0) {
-    alert('Board inválido!');
-  } else if (tamanhoPixel < 5) {
-    alert('Board inválido! Mínimo 5x5');
-  } else if (tamanhoPixel > 20) {
-    alert('Board inválido! Limite de 20x20');
+  const inputElement = document.getElementById('board-size');
+  tamanhoPixel = parseInt(inputElement.value);
+
+  if (isNaN(tamanhoPixel) || tamanhoPixel < 5 || tamanhoPixel > 50) {
+    alert('Board inválido! Tamanho deve estar entre 5 e 50.');
   } else {
-    inputBoardSize(tamanhoPixel);
+    changeBoardSize(tamanhoPixel);
   }
 }
 
+const buttonInput = document.getElementById('generate-board');
 buttonInput.addEventListener('click', inputSize);
 
-
+// Inicialização do quadro de pixels com o tamanho padrão
+pixelInit(tamanhoPixel);
