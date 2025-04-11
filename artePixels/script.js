@@ -1,6 +1,6 @@
 const pixelBoard = document.getElementById("pixel-board");
 const colorPalette = document.getElementById("color-palette");
-const button = document.getElementById('button-clean');
+const button = document.getElementById('clear-board');
 const paletteColors = [];
 const colorNumber = 4; 
 let quadroPixel = [];
@@ -100,14 +100,23 @@ function changeBoardSize(lineNumber) {
 // Função para pegar o tamanho do quadro a partir do input
 function inputSize() {
   const inputElement = document.getElementById('board-size');
-  tamanhoPixel = parseInt(inputElement.value);
+  let tamanhoPixel = parseInt(inputElement.value);
 
-  if (isNaN(tamanhoPixel) || tamanhoPixel < 5 || tamanhoPixel > 50) {
-    alert('Board inválido! Tamanho deve estar entre 5 e 50.');
-  } else {
-    changeBoardSize(tamanhoPixel);
+  if (isNaN(tamanhoPixel)) {
+    alert('Board inválido!');
+    return;
   }
+
+  // Corrigindo o valor se estiver fora do intervalo
+  if (tamanhoPixel < 5) {
+    tamanhoPixel = 5;
+  } else if (tamanhoPixel > 50) {
+    tamanhoPixel = 50;
+  }
+
+  changeBoardSize(tamanhoPixel);
 }
+
 
 const buttonInput = document.getElementById('generate-board');
 buttonInput.addEventListener('click', inputSize);
