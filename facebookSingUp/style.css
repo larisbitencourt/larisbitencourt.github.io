@@ -1,63 +1,50 @@
 .top-bar-container {
-
-    display: flex;
-    justify-content: space-between;
-    background-color: rgb(66, 103, 178)
-    
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(66, 103, 178);
 }
 
 .facebook-logo {
-    margin: left;
+  margin: left;
 }
 
 .facebook-login {
-    display: flex;
-    align-self: center;
-    padding: 15px;
-    font-family: sans-serif;
-    color: white;
-    
-
+  display: flex;
+  align-self: center;
+  padding: 15px;
+  font-family: sans-serif;
+  color: white;
 }
 
-
-
 .form-group {
-    display: flex;
-    flex-direction: column;
-
-
-
+  display: flex;
+  flex-direction: column;
 }
 
 .form-control {
-    display: flex;
-    align-self: flex-end;
-}
-
-section div {
-
-    display: flex;
-    flex-direction: row;
+  display: flex;
+  align-self: flex-end;
 }
 
 .main-content {
-display: flex;
-justify-content:flex-start;
-
-
-/* COLOCAR A IMAGEM ABAIXO DO TEXTO */
-
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
 }
 
 .left-content {
- 
-    display: flex;
-    width: 800px;
+  width: 800px;
 }
 
 .right-content {
-    display: flex;
+  width: 300px;
+}
 
-    width: 300px;
+aside form div {
+    display: flex;
+  
+}
+
+.campo-genero {
+    display: flex;
 }
