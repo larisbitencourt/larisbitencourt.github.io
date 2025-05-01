@@ -5,10 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Facebook</title>
     <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
   </head>
   <body>
     <header class="top-bar-container">
       <img src="imgs/facebook-logo.png" class="facebook-logo" />
+      
       <form method="GET" enctype="multipart/form-data" class="facebook-login">
         <section class="form-group">
           <label for="email-ou-telefone" id="user-email-phone-label"
@@ -30,6 +32,7 @@
           </button>
         </section>
       </form>
+
     </header>
 
     <section class="main-content">
@@ -51,13 +54,13 @@
           <div>
        <label for="first-name" name="firstname" >
 
-        <input type="text" id="first-name" placeholder="Nome" required />
+        <input type="text" id="first-name" placeholder="Nome" />
 
        </label>
 
        <label for="last-name" name="lastname">
 
-        <input type="text" id="last-name" placeholder="Sobrenome" required/>
+        <input type="text" id="last-name" placeholder="Sobrenome" />
 
        </label>
 
@@ -65,13 +68,13 @@
 
        <label for="phone-email" name="phone_email" >
 
-        <input type="text" id="phone-email" placeholder="Celular ou email" required/>
+        <input type="text" id="phone-email" placeholder="Celular ou email" />
 
        </label>
 
        <label for="password-id" name="password">
 
-        <input type="text" id="password-id" placeholder="Nova Senha" required/>
+        <input type="text" id="password-id" placeholder="Nova Senha" />
 
        </label>
        
@@ -80,28 +83,30 @@
 
       <label for="label-bithdate" name="birthdate"> Data de nascimento
 
-       <input type="date" id="label-bithdate" placeholder="dd/mm/aaa" value="" required/>
+       <input type="date" id="label-bithdate" placeholder="dd/mm/aaa" value="" />
 
       </label>
 
     </div>
 
 
-      <label for="" name="gender" class="campo-genero" required> Gênero
+      <label for="" name="gender" class="campo-genero" > Gênero
         
-        <input type="radio" id="label-gender" name="gender" />
+        <input type="radio" id="label-gender-f" name="gender" />
 
-       <label for="label-gender" > Feminino</label>
+       <label for="label-gender-f" > Feminino</label>
   
-       <input type="radio" id="label-gender" name="gender" />
+       <input type="radio" id="label-gender-m" name="gender" />
 
-       <label for="label-gender" > Masculino</label>
+       <label for="label-gender-m" > Masculino</label>
 
-       <input type="radio" id="label-gender" name="gender" />
+       <input type="radio" id="label-gender-p" name="gender" />
        
-       <label for="label-gender" > Personalizado</label>
+       <label for="label-gender-p" > Personalizado</label>
  
        </label>
+       
+       <p id="error-message" style="color: red; display: none;">Campos inválidos</p>
 
 
        <button type="submit"  id="facebook-register">Cadastre-se
