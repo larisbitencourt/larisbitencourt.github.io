@@ -83,7 +83,7 @@
 
       <label for="label-bithdate" name="birthdate"> Data de nascimento
 
-       <input type="date" id="label-bithdate" placeholder="dd/mm/aaa" value="" />
+       <input type="date" id="label-birthdate" placeholder="dd/mm/aaa" value="" />
 
       </label>
 
@@ -92,19 +92,27 @@
 
       <label for="" name="gender" class="campo-genero" > Gênero
         
-        <input type="radio" id="label-gender-f" name="gender" />
+        <input type="radio" id="label-gender-f" name="gender" value="feminino" />
 
        <label for="label-gender-f" > Feminino</label>
   
-       <input type="radio" id="label-gender-m" name="gender" />
+       <input type="radio" id="label-gender-m" name="gender" value="masculino" />
 
        <label for="label-gender-m" > Masculino</label>
 
-       <input type="radio" id="label-gender-p" name="gender" />
+       <input type="radio" id="label-gender-p" name="gender" value="personalizado"/>
        
        <label for="label-gender-p" > Personalizado</label>
+
+       <div id="campoAdicional" style="display: none;">
+
+        <label for="generoCustom">Gênero:</label>
+        <input type="text" id="generoCustom" name="gender-custom" placeholder="Gênero (opcional)" />
+
+      </div>
  
        </label>
+
        
        <p id="error-message" style="color: red; display: none;">Campos inválidos</p>
 

@@ -16,6 +16,7 @@
   color: white;
 }
 
+
 .form-group {
   display: flex;
   flex-direction: column;
@@ -47,4 +48,36 @@ aside form div {
 
 .campo-genero {
     display: flex;
+}
+
+
+@media screen and (max-width: 768px) {
+  .top-bar-container,
+  .main-content,
+  .facebook-login,
+  aside form div,
+  .campo-genero {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .facebook-logo,
+  .left-content,
+  .right-content,
+  .form-group,
+  .form-control,
+  input,
+  #facebook-register {
+    width: 90%;
+    margin: 5px 0;
+  }
+
+  .main-content {
+    text-align: center;
+  }
+
+  #facebook-register {
+    padding: 10px;
+    font-size: 1rem;
+  }
 }
