@@ -1,4 +1,4 @@
-.top-bar-container {
+.top-bar {
   display: flex;
   justify-content: space-between;
   background-color: rgb(66, 103, 178);
@@ -8,12 +8,32 @@
   margin: left;
 }
 
+#facebook-slogan {
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
 .facebook-login {
   display: flex;
+  flex-direction: row;
   align-self: center;
   padding: 15px;
   font-family: sans-serif;
   color: white;
+  gap: 10px;
+}
+
+#button-login {
+  padding: 3px; 
+ font-size: 15px;
+  background-color: #3b5998; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  border: 1px solid #1e3a6d;
+
+
 }
 
 
@@ -39,16 +59,70 @@
 
 .right-content {
   width: 300px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+.right-content h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 22px;
+}
+
+#form {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 17px;
+  size: 10px;
 }
 
 aside form div {
     display: flex;
-  
+    gap: 10px;
+    margin-bottom: 4px;
+ 
+}
+
+aside form label {
+
+  display: block;
+  margin-bottom: 10px;
+
+}
+
+#label.gender {
+
+  display: flex;
+  flex-wrap: wrap;
 }
 
 .campo-genero {
-    display: flex;
+   
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  gap: 5px; 
 }
+
+
+
+.radio-item {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+
+#facebook-register {
+  width: 50%;         
+  padding: 10px;       
+  font-size: 1.1rem; 
+  margin-top: 8px;   
+  background-color: #42b72a; 
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
 
 
 @media screen and (max-width: 768px) {
