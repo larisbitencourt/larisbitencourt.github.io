@@ -1,4 +1,13 @@
 
+document.addEventListener("DOMContentLoaded", function () {
+  const buttonLogin = document.getElementById("button-login");
+  const emailPhoneInput = document.getElementById("user-email-phone");
+
+  buttonLogin.addEventListener("click", function () {
+    const emailPhoneValue = emailPhoneInput.value.trim();
+    alert(emailPhoneValue || "Por favor, insira um email ou telefone.");
+  });  
+});
 
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -22,7 +31,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const lastName = document.getElementById("last-name").value.trim();
     const phoneEmail = document.getElementById("phone-email").value.trim();
     const password = document.getElementById("password-id").value.trim();
-    const birthdate = document.getElementById("label-birthdate").value.trim(); 
+    const birthdate = document.querySelector('input[name="birthdate"]').value.trim();
     const generoSelecionado = document.querySelector('input[name="gender"]:checked'); // á retorna diretamente o input que está marcado (ou null se nenhum estiver), se for null significa que nenhum genero foi selecionado
     let genero = generoSelecionado ? generoSelecionado.value : "";
 
@@ -38,9 +47,10 @@ document.addEventListener("DOMContentLoaded", function () {
       errorMessage.style.display = "none";
     }
 
+    const saudacao = `Olá, ${firstName} ${lastName}`;
     // Substituir conteúdo se estiver tudo preenchido
     const novoHtml = `
-      <h2>Dados do Formulário</h2>
+      <h2>${saudacao}</h2>
       <p>Nome: ${firstName}</p>
       <p>Sobrenome: ${lastName}</p>
       <p>Celular ou Email: ${phoneEmail}</p>
@@ -53,6 +63,8 @@ document.addEventListener("DOMContentLoaded", function () {
     container.innerHTML = novoHtml;
   });
 });
+
+
 
 
 

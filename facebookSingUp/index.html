@@ -8,9 +8,9 @@
     <script src="script.js"></script>
   </head>
   <body>
-    <header class="top-bar-container">
+    <header class="top-bar">
       <img src="imgs/facebook-logo.png" class="facebook-logo" />
-      
+
       <form method="GET" enctype="multipart/form-data" class="facebook-login">
         <section class="form-group">
           <label for="email-ou-telefone" id="user-email-phone-label"
@@ -27,7 +27,7 @@
         </section>
 
         <section class="form-control">
-          <button onclick="alert('Email ou telefone')" id="button-login">
+          <button type="button"  id="button-login">  
             Entrar
           </button>
         </section>
@@ -74,35 +74,45 @@
 
        <label for="password-id" name="password">
 
-        <input type="text" id="password-id" placeholder="Nova Senha" />
+        <input type="password" id="password-id" placeholder="Nova Senha" />
 
        </label>
-       
+
        <div>
 
 
-      <label for="label-bithdate" name="birthdate"> Data de nascimento
+      <label for="label-bithdate"  id="label-birthdate" > Data de nascimento
 
-       <input type="date" id="label-birthdate" placeholder="dd/mm/aaa" value="" />
+       <input type="text" placeholder="dd/mm/aaa" name="birthdate" aria-placeholder="dd/mm/aaaa"  value="" />
 
       </label>
 
     </div>
 
+    <div class="campo-genero">
+      <label class="genero-titulo" id="label-gender" >Gênero:</label>
 
-      <label for="" name="gender" class="campo-genero" > Gênero
-        
-        <input type="radio" id="label-gender-f" name="gender" value="feminino" />
+      <div class="radio-item">
+        <label class="radio-item">
+          <input type="radio" name="gender" value="feminino" />
+          Feminino
+        </label>
 
-       <label for="label-gender-f" > Feminino</label>
-  
-       <input type="radio" id="label-gender-m" name="gender" value="masculino" />
+        <label class="radio-item">
+          <input type="radio" name="gender" value="masculino" />
+          Masculino
+        </label>
 
-       <label for="label-gender-m" > Masculino</label>
+        <label class="radio-item">
+          <input type="radio" name="gender" value="personalizado" />
+          Personalizado
+        </label>
+      </div>
+    </div>
 
-       <input type="radio" id="label-gender-p" name="gender" value="personalizado"/>
-       
-       <label for="label-gender-p" > Personalizado</label>
+
+
+
 
        <div id="campoAdicional" style="display: none;">
 
@@ -110,23 +120,23 @@
         <input type="text" id="generoCustom" name="gender-custom" placeholder="Gênero (opcional)" />
 
       </div>
- 
+
        </label>
 
-       
+
        <p id="error-message" style="color: red; display: none;">Campos inválidos</p>
 
 
        <button type="submit"  id="facebook-register">Cadastre-se
-        
-          
+
+
        </button>
-<!-- 
+<!--
        Exibir uma mensagem "Campos inválidos" dentro do formulário caso pelo menos um campo não esteja preenchido -->
 
         </form>
 
-        
+
 
       </aside>
 
