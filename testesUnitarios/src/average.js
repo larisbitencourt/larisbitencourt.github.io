@@ -29,7 +29,7 @@ const average = (array) => {
     soma += array[index];
   }
 
-  return Math.trunc (soma / array.length);
+  return Math.round (soma / array.length);
 };
 
 console.log(average([0, 0, 1]));
