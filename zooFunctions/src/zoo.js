@@ -126,37 +126,49 @@ function oldestFromFirstSpecies(id) {
   return [olderAge.name, olderAge.sex, olderAge.age];
 }
 
-function increasePrices(percentage) {}
-
-const data = require("./data");
-
-function employeeCoverage(idOrName) {
-  //consulta a especie pela qual o colaborador é responsável, id, firstname ou lastname
-  //sem parametros retorna uma lista array de todos funcionarios e os animais q eles saõ responsaveis
-  // com o id,first ou lastname retorna animals pelo qual ele é responsável
-  //
-  //iterar employees e achar os ids das especies animais que ele é responsável
-  // const animalSpecie = data.animals.find((specie) => specie.name === animal);
-
-  const responsibleFor = data.employees.find((responsible) => {
-    return (
-      responsible.id === idOrName ||
-      responsible.firstName === idOrName ||
-      responsible.lastName === idOrName
-    ); //guardando o funcionário
-
-    return responsibleFor.responsibleFor.filter((idAnimals) => {
-      return 
-    })
-    
-    // const animalSpecie = data.animals.find((specie) => specie.name === animal);
-
-    // return animalSpecie.residents.every((resident) => resident.age >= age);
- 
-
-
+function increasePrices(percentage) {
+  Object.entries(data.prices).forEach(([key, value]) => {
+    data.prices[key] = Math.round(value * (1 + percentage / 100) * 100) / 100;
   });
 }
+
+function employeeCoverage(idOrName) {
+const getAnimalNames = (ids) => {
+  return ids.reduce((names, id) => {
+    const animal = data.animals.find(animal => animal.id === id);
+    if (animal) {
+      names.push(animal.name);
+    }
+    return names;
+  }, []);
+};
+
+  if (!idOrName) {
+    // Sem parâmetro: retorna todos os funcionários
+    return data.employees.reduce((acc, employee) => {
+      const fullName = `${employee.firstName} ${employee.lastName}`;
+      acc[fullName] = getAnimalNames(employee.responsibleFor);
+      return acc;
+    }, {});
+  }
+
+  // Com id, nome ou sobrenome
+  const employee = data.employees.find(
+    (emp) =>
+      emp.id === idOrName ||
+      emp.firstName === idOrName ||
+      emp.lastName === idOrName
+  );
+
+  if (!employee) return {}; // Se não encontrar o funcionário
+
+  const fullName = `${employee.firstName} ${employee.lastName}`;
+  return {
+    [fullName]: getAnimalNames(employee.responsibleFor),
+  };
+}
+
+console.log(employeeCoverage("Stephanie")); //os nomes dos animais vem trocados????
 
 module.exports = {
   entryCalculator,
