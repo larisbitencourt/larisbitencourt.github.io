@@ -92,9 +92,48 @@ function entryCalculator(entrants) {
   return total;
 }
 
+// 1-Sem parâmetros, retorna animais categorizados por localização
+// 2-Com a opção `includeNames: true` especificada, retorna nomes de animais
+// 3-Com a opção `sorted: true` especificada, retorna nomes de animais ordenados
+// 4-Com a opção `sex: \'female\'` ou `sex: \'male\'` especificada, retorna somente nomes de animais macho/fêmea
+// 5-Com a opção `sex: \'female\'` ou `sex: \'male\'` especificada e a opção `sort: true` especificada, retorna somente nomes de animais macho/fêmea com os nomes dos animais ordenados
+// 6-Só retorna informações ordenadas e com sexo se a opção `includeNames: true` for especificada
+
+const data = require("./data");
 function animalMap(options) {
-  //sem parametro retorna animais pela sua localização
+  console.log(options);
+
+  if (options.includeNames === true) {
+    // caso2
+  }
+
+  if ((options.includeNames === true) && (options.sorted === true)) {
+    // caso3
+  }
+
+  if ((options.includeNames === true) && (options.sorted === true)) {
+    // caso4
+  }
+
+  if ((options.includeNames === true) && (options.sorted === true)) {
+    // caso5
+  }
+
+
+  if (!options) {
+    const resultLocation = data.animals.reduce((acc, animal) => {
+      if (!acc[animal.location]) {
+        acc[animal.location] = [];
+      }
+      acc[animal.location].push(animal.name);
+      return acc;
+    }, {});
+
+    return resultLocation;
+  }
 }
+
+console.log(animalMap());
 
 function schedule(dayName) {
   const message = {
@@ -133,15 +172,15 @@ function increasePrices(percentage) {
 }
 
 function employeeCoverage(idOrName) {
-const getAnimalNames = (ids) => {
-  return ids.reduce((names, id) => {
-    const animal = data.animals.find(animal => animal.id === id);
-    if (animal) {
-      names.push(animal.name);
-    }
-    return names;
-  }, []);
-};
+  const getAnimalNames = (ids) => {
+    return ids.reduce((names, id) => {
+      const animal = data.animals.find((animal) => animal.id === id);
+      if (animal) {
+        names.push(animal.name);
+      }
+      return names;
+    }, []);
+  };
 
   if (!idOrName) {
     // Sem parâmetro: retorna todos os funcionários
