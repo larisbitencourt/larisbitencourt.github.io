@@ -99,27 +99,55 @@ function entryCalculator(entrants) {
 // 5-Com a opção `sex: \'female\'` ou `sex: \'male\'` especificada e a opção `sort: true` especificada, retorna somente nomes de animais macho/fêmea com os nomes dos animais ordenados
 // 6-Só retorna informações ordenadas e com sexo se a opção `includeNames: true` for especificada
 
-const data = require("./data");
+// const data = require("./data");
+
 function animalMap(options) {
-  console.log(options);
+  if (options?.includeNames === true) {
+    // sex/sexfemale
+    if (options.sex) {
+      const resultSex = data.animals.reduce((acc, animal) => {
+        if (!acc[animal.location]) {
+          acc[animal.location] = [];
+        }
+        let names = animal.residents
+          .filter((resident) => {
+            return resident.sex === options.sex;
+          })
+          .map((resident) => {
+            return resident.name;
+          });
 
-  if (options.includeNames === true) {
-    // caso2
+        if (options.sorted) {
+          names.sort((a, b) => a.localeCompare(b));
+        }
+
+        acc[animal.location].push({ [animal.name]: names });
+        return acc;
+      }, {});
+      return resultSex;
+    }
+
+    // includeNames
+    const resultIncludeNames = data.animals.reduce((acc, animal) => {
+      if (!acc[animal.location]) {
+        acc[animal.location] = [];
+      }
+
+      let names = animal.residents.map((resident) => {
+        return resident.name;
+      });
+
+      if (options.sorted) {
+        names.sort((a, b) => a.localeCompare(b));
+      }
+
+      acc[animal.location].push({ [animal.name]: names });
+      return acc;
+    }, {});
+    return resultIncludeNames;
   }
 
-  if ((options.includeNames === true) && (options.sorted === true)) {
-    // caso3
-  }
-
-  if ((options.includeNames === true) && (options.sorted === true)) {
-    // caso4
-  }
-
-  if ((options.includeNames === true) && (options.sorted === true)) {
-    // caso5
-  }
-
-
+  // Sem options
   if (!options) {
     const resultLocation = data.animals.reduce((acc, animal) => {
       if (!acc[animal.location]) {
@@ -128,12 +156,37 @@ function animalMap(options) {
       acc[animal.location].push(animal.name);
       return acc;
     }, {});
-
     return resultLocation;
+  }
+
+  // sex female
+
+  if (options.sex === 'female') {
+    const resultSex = data.animals.reduce((acc, animal) => {
+      if (!acc[animal.location]) {
+        acc[animal.location] = [];
+      }
+
+      let female = animal.residents.filter((resident) => {
+        return resident.sex === 'female';
+      });
+
+      if (female) {
+        acc[animal.location].push(animal.name);
+      }
+
+       if (options.sorted) {
+      Object.keys(female).sort((a, b) => a.localeCompare(b));
+
+      }
+
+      return acc;
+    }, {});
+    return resultSex;
   }
 }
 
-console.log(animalMap());
+console.log(JSON.stringify(animalMap({ sex: "female" })));
 
 function schedule(dayName) {
   const message = {
@@ -207,7 +260,7 @@ function employeeCoverage(idOrName) {
   };
 }
 
-console.log(employeeCoverage("Stephanie")); //os nomes dos animais vem trocados????
+
 
 module.exports = {
   entryCalculator,
