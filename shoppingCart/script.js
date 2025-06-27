@@ -44,7 +44,7 @@ const salvarNoLocalStorage = () => {
 function carregarLocalStorage() {
   document.querySelector(itensDoCarrinhoDOM).innerHTML =
     localStorage.getItem("itensCarrinho");
-  carrinho.innerHTML = ""; // Limpa antes de adicionar
+  
 }
 
 // FUNCÃO DO PROJETO, nao imagino pra que seja???
@@ -118,6 +118,7 @@ async function AdicionarProdutoNoCarrinho(produtoid) {
 // Adiciona os produtos e os eventos dos produtos
 const listarProdutos = (data) => {
   const sectionItens = document.querySelector("section.items"); // Captura o endereço do section.items no html
+  sectionItens.innerHTML = ''; // limpar o conteudo da sessão antes de percorrer novamente
   data.forEach((result, index) => {
     // HOF pra adicionar o evento a todos os elementos listados
     sectionItens.appendChild(
@@ -152,8 +153,8 @@ pesquisarProduto(); // chama a função de requisitar a lista de produtos
 // Funções carregadas quando a página é carregada
 window.onload = function onload() {
   carregarLocalStorage(); // carrega o local storage
-  somarItensDocarrinho();
   adicionarEventoAosItensDoCarrinho(); // Adiciona os eventos ao carrinho assim que a página é carregada
+  somarItensDocarrinho();
   document
     .querySelector(".empty-cart")
     .addEventListener("click", esvaziarCarrinho); // Adiciona o evento ao botão de esvaziar o carrinho
