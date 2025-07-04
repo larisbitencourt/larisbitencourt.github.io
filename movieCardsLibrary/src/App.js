@@ -9,7 +9,8 @@ function App() {
     <div className="App">
       <div>
         <Header />
-        <MovieList movies={ movies } />
+        <MovieList movies={ movies } /> 
+        {/* recebe array de movies via props */}
       </div>
     </div>
   );
