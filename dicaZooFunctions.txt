@@ -1,0 +1,44 @@
+1 CASO:
+	Nenhum parametro
+
+2 CASO:
+	includeNames: true 4
+
+3 CASO:
+	includeNames: true, sorted: true 3
+
+4 CASO:
+	includeNames: true, sex: 'female' 2
+
+5 CASO:
+	includeNames: true, sex: 'female', sorted: true 1
+	
+6 CASO:
+	sex: 'female' 6
+	
+7 CASO: 
+	sex: 'female', sorted: true 5
+
+if( Nenhum parametro ) {
+}
+
+if(includeNames === true) {
+	if(sex === 'male') {
+	
+	} elseif (sex === 'female') {
+	
+	}
+	codigo so do includes
+	OBJETO FINAL
+	if (sorted === true) {
+	 return objFinal.sort()
+	}
+	return objFInal
+}
+
+
+
+
+
+2. Se includeNames for true:
+	popular o array da localizacao com um objeto que tenha chave a especie e valor um array com os nome dos residentes
