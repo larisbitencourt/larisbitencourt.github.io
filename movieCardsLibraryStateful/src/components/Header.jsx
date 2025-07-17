@@ -1,6 +1,8 @@
 import React from 'react';
 
-class Header extends React.Component {
+// componente criado como uma classe que heda as funcionalidades de react.component
+
+class Header extends React.Component { 
   render() {
     return (
       <header className="movie-card-header">

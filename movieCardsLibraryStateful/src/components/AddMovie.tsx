@@ -1,3 +1,5 @@
+// Formulário controlado que permite ao usuário adicionar um novo filme, mantendo o estado dos campos internamente e enviando os dados para o componente pai quando o usuário clicar em adicionar. Também limpa o formulário após a submissão.
+
 import React from "react";
 
 type AddMovieProps = {
@@ -23,7 +25,7 @@ const initialState: AddMovieState = {
 };
 
 class AddMovie extends React.Component<AddMovieProps, AddMovieState> {
-  constructor(props: AddMovieProps) {
+  constructor(props: AddMovieProps) { 
     super(props);
     this.state = initialState;
   
@@ -136,6 +138,16 @@ class AddMovie extends React.Component<AddMovieProps, AddMovieState> {
 }
 
 export default AddMovie;
+
+// o construtor inicializa o estado
+
+// 2. Por que usamos o super(props)? Sua classe AddMovie estende (herda de) React.Component.
+// React.Component também tem seu próprio constructor e precisa ser inicializado.
+
+// Para isso, dentro do seu constructor, você chama o super(), que executa o construtor da classe pai.
+// Passar props para o super faz com que o React.Component possa acessar as props no seu componente, logo this.props estará disponível dentro do constructor.
+
+// Se não passar props para o super, você não poderá acessar this.props dentro do construtor (isso causaria erro).
 
 
 // this = o objeto que representa o componente atual.

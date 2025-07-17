@@ -1,8 +1,10 @@
+// apresenta os controles de filtro: campo de busca de texto, checkbox para mostrar só favoritos, e dropdown para seleção de gênero. Recebe funções para avisar o pai sobre mudanças nos filtros.
+
 import React from 'react';
 
-type SearchBarProps = {
+type SearchBarProps = { // o que as props devem receber 
   searchText: string;
-  onSearchTextChange: (newText: string) => void;
+  onSearchTextChange: (newText: string) => void; // função que recebe um novo texto e não retorna nada
   bookmarkedOnly: boolean;
   onBookmarkedChange: (bookmarked: boolean) => void;
   selectedGenre: string;
@@ -30,7 +32,7 @@ class SearchBar extends React.Component<SearchBarProps> {
 
 
   render() {
-    const { searchText, bookmarkedOnly, selectedGenre } = this.props;
+    const { searchText, bookmarkedOnly, selectedGenre } = this.props; // Extrai as props que vão ser usadas para controlar os inputs do formulário.
 
     return (
       <section>
@@ -41,8 +43,7 @@ class SearchBar extends React.Component<SearchBarProps> {
             data-testid="text-input"
             type="text"
             value={searchText}
-            onChange={this.handleTextChange} // para pegar o onBookMarkedChange
-            placeholder="Search by title"
+            onChange={this.handleTextChange} //chama a função sempre que o valor mudar
           />
         </label>
 
