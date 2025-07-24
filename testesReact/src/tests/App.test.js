@@ -67,7 +67,7 @@ test("aplicação é redirecionada para a página de Pokémons Favoritados, na U
   await userEvent.click(favorites);
 
   
-  const favoriteRoute = await screen.findByText(/Favorite pokémons/i);
+  const favoriteRoute = await screen.findByRole('heading', { name: /favorite pokémons/i });
   expect(favoriteRoute).toBeInTheDocument();
 
 });
@@ -79,6 +79,6 @@ test('aplicação é redirecionada para a página Not Found ao entrar em uma URL
     history.push('/url-que-nao-existe');
 
   
-  const notFound = await screen.findByText(/Page requested not found 😭/i);
+  const notFound =  await screen.findByRole('heading', { name: /page requested not found/i });
   expect(notFound).toBeInTheDocument();
 });
