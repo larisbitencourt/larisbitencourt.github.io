@@ -2,7 +2,6 @@ import React from "react";
 import { MemoryRouter } from "react-router-dom";
 import { render, screen, fireEvent } from "@testing-library/react";
 import App from "../App";
-import userEvent from "@testing-library/user-event";
 import renderWithRouter from "./utils/renderWithRouter";
 import { Pokedex } from "../components";
 
@@ -204,3 +203,44 @@ describe("se a Pokédex contém um botão para resetar o filtro", () => {
     expect(screen.getByText("Pikachu")).toBeInTheDocument();
   });
 });
+
+test("se é criado, dinamicamente, um botão de filtro para cada tipo de Pokémon", () => {
+  renderWithRouter(
+    <Pokedex
+      pokemons={pokemonsMock}
+      isPokemonFavoriteById={{ 25: false, 4: false }}
+    />
+  );
+
+  const buttonFilterAll = screen.getByRole("button", { name: /All/i });
+  expect(buttonFilterAll).toBeInTheDocument();
+
+  const typeButtons = screen.getAllByTestId("pokemon-type-button"); // se há botões únicos de tipo
+  const expectedTypes = [
+    ...new Set(pokemonsMock.map((pokemon) => pokemon.type)),
+  ];
+
+  // coleta os tipos únicos da mock, cria um array com todos os tipos dos pokémons da lista, o set remove os duplicados e [ ...new Set(...) ] cria um novo array com os types sem duplicações
+  expect(typeButtons).toHaveLength(expectedTypes.length); // verifica se o número de botões são oguais aos números de tipos
+  expectedTypes.forEach((onlyType) => {
+    const typeButton = screen.getByRole("button", { name: onlyType });
+    expect(typeButton).toBeInTheDocument();
+  });
+});
+
+test("O botão de Próximo pokémon deve ser desabilitado quando a lista filtrada de Pokémons tiver um só pokémon", () => {
+  renderWithRouter(
+    <Pokedex
+      pokemons={pokemonsMock}
+      isPokemonFavoriteById={{ 25: false, 4: false }}
+    />
+  );
+
+   const filter = screen.getByRole('button', {name: 'Electric'})
+   fireEvent.click(filter);
+   const nextButtonDisabled = screen.getByRole("button", { name: /próximo pokémon/i });
+   expect(nextButtonDisabled).toBeInTheDocument()
+
+});
+
+
