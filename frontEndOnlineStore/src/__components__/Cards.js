@@ -1,39 +1,72 @@
-import React, { useEffect } from "react";
-import App from "../App";
+import React, { useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
+import * as api from "../services/api";
+import Detalhes from "./Detalhes.js";
+import Carrinho from "./Carrinho.js";
 
-function Cards() {
+// o componente home faz a chamada API, que gerencia o estado da busca e passa para Cards via props
+// No React Router v5, navegação programática é feita com useHistory e não useNavigate (esse é v6)
 
-    const [image, setImage] = useState('');
+function Cards({ products, carrinho, setCarrinho }) {
+  const history = useHistory();
 
-    useEffect(() => {
-      api
-        .getProductsFromCategoryAndQuery(searchProducts)
-    }, []);
+  if (!products || products.length === 0) {
+    return <p>Nenhum produto foi encontrado</p>;
+  }
 
   return (
-   <section className="card-body">
-     {.map((category) => ( // para cada categoria renderiza um label
-        <label key={category.id} className="category-label">
-          <input
-            type="radio"
-            name="category"
-            value={category.id}
-            checked={selected === category.id}
-            onChange={() => setSelected(category.id)} // quando clica, atualiza o id 
-            className="category-radio"
-            data-testid="category"
+    <section className="card-body">
+      {products.map((product) => (
+        <div
+          key={product.id}
+          className="card"
+          data-testid="product"
+          onClick={() => history.push(`/detalhes/${product.id}`)}
+        >
+          <h1>{product.title}</h1>
+          <img
+            data-testid="product-detail-link"
+            src={product.thumbnail || product.image} // Usa thumbnail (teste) ou image (Fake Store)
+            alt={`Imagem de ${product.title}`}
+            width={150}
           />
-    <h1>{title}</h1> // como pegar esse title?
-    <img
-    src="{image}" // pode passar uma importação
-    alt="Imagem do produto"
-    />
-   <h2>{price}</h2>
+          <h2>{`R$ ${product.price}`}</h2>
 
-   </section>
+          <button
+            data-testid="product-add-to-cart"
+            onClick={(e) => {
+              e.stopPropagation(); // impede que o clique suba para a div
+              setCarrinho((prev) => [...prev, product]);
+            }}
+          >
+            Adicionar ao carrinho
+          </button>
+        </div>
+      ))}
+    </section>
   );
 }
 
+// para cada produto, cria uma div com nome, imagem e preço
+
 export default Cards;
 
-// requisito 5 voltar a partir dauqi 
+// Antes no requisito 4:
+
+// const [products, setProducts] = useState([]);
+
+// useEffect(() => {
+//   const fetchProducts = async () => {
+//     const response = await api.getProductsFromCategoryAndQuery('', query); // nenhuma categoria, query: termo de busca digitado
+
+//      if (response.results) {
+//       setProducts(response.results); // para o teste
+//     } else {
+//       setProducts(response); // Fake Store API já retorna um array,  atualiza o estado com os produtos retornados
+//     }
+//   };
+
+//   if (query) {
+//     fetchProducts();  // so será chamada se query não for vazia
+//   }
+// }, [query]); // será executado sempre que o query mudar
