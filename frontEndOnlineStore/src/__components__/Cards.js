@@ -7,7 +7,7 @@ import Carrinho from "./Carrinho.js";
 // o componente home faz a chamada API, que gerencia o estado da busca e passa para Cards via props
 // No React Router v5, navegação programática é feita com useHistory e não useNavigate (esse é v6)
 
-function Cards({ products, carrinho, setCarrinho }) {
+function Cards({ products, carrinho, setCarrinho, handleAddToCart }) {
   const history = useHistory();
 
   if (!products || products.length === 0) {
@@ -36,7 +36,8 @@ function Cards({ products, carrinho, setCarrinho }) {
             data-testid="product-add-to-cart"
             onClick={(e) => {
               e.stopPropagation(); // impede que o clique suba para a div
-              setCarrinho((prev) => [...prev, product]);
+              // setCarrinho((prev) => [...prev, product]);
+               handleAddToCart(product);
             }}
           >
             Adicionar ao carrinho
