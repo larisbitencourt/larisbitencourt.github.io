@@ -1,11 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import { FaStar } from "react-icons/fa";
 import * as api from "../services/api";
 
-function Detalhes({ carrinho, setCarrinho }) {
+function Detalhes({ carrinho, setCarrinho, handleAddToCart }) {
   const { id } = useParams(); // pega o id do produto da URL
-  const [product, setProduct] = useState(null); // estado para armazenar o produto atual
 
+  
+  const [product, setProduct] = useState(null); // estado para armazenar o produto atual
+  const [rating, setRating] = useState(0); // nota do usuário (1 a 5)
+  const [evaluation, setEvaluation] = useState(""); // comentário do usuário
+  const [reviews, setReviews] = useState([]); // avaliações totais do produto
+
+  // Buscar produto ao montar o componente
   useEffect(() => {
     async function fetchProduct() {
       const allProducts = await api.getProductsFromCategoryAndQuery(); // pega todos os produtos da API
@@ -16,27 +23,24 @@ function Detalhes({ carrinho, setCarrinho }) {
     fetchProduct();
   }, [id]); // roda sempre que o id muda
 
-  if (!product) return <p>Carregando...</p>; // evita renderizar antes de ter o produto
-  const handleAddToCart = (product) => {
-    setCarrinho((prevCarrinho) => {
-      // verifica se o produto já está no carrinho
-      const produtoExistente = prevCarrinho.find(
-        (item) => item.id === product.id
-      );
+  // Ver se já tem alguma avaliação desse produto
+  useEffect(() => {
+    const savedReviews = JSON.parse(localStorage.getItem(`reviews-${id}`)) || [];
+    setReviews(savedReviews);
+  }, [id]);
 
-      if (produtoExistente) {
-        // se existir, incrementa a quantidade
-        return prevCarrinho.map((item) =>
-          item.id === product.id
-            ? { ...item, quantity: item.quantity ? item.quantity + 1 : 2 }
-            : item
-        );
-      } else {
-        // se não existir, adiciona o produto com quantity 1
-        return [...prevCarrinho, { ...product, quantity: 1 }];
-      }
-    });
+  // Função para enviar avaliação
+  const handleSubmitReview = (e) => {
+    e.preventDefault(); // evita que recarregue a página 
+    const newReview = { rating, comment: evaluation }; // cria o objeto com a nota e o comentário
+    const updatedReviews = [...reviews, newReview]; // novo array com todas as avaliações existentes
+    setReviews(updatedReviews);
+    localStorage.setItem(`reviews-${id}`, JSON.stringify(updatedReviews)); // salva no localStorage usando o id, stringfy transforma o array em string para o localStorage
+    setEvaluation(""); // limpa comentário
+    setRating(0); // limpa nota
   };
+
+  if (!product) return <p>Carregando...</p>; // evita renderizar antes de ter o produto
 
   return (
     <div>
@@ -56,8 +60,9 @@ function Detalhes({ carrinho, setCarrinho }) {
         </div>
       </section>
 
+      {/* Botão para adicionar ao carrinho */}
       <button
-        data-testid="product-add-to-cart"
+        data-testid="product-detail-add-to-cart"
         onClick={() => handleAddToCart(product)}
       >
         Adicionar ao carrinho
@@ -71,6 +76,48 @@ function Detalhes({ carrinho, setCarrinho }) {
           <li>Price: R$ {product.price}</li>
         </ul>
       </aside>
+
+      {/*Formulário de avaliação com estrelas, ao ser enviado chama a função*/}
+      <form onSubmit={handleSubmitReview}>
+        {/* Estrelas clicáveis */}
+        <div style={{ display: "flex", gap: "5px", marginBottom: "8px" }}>
+          {[1, 2, 3, 4, 5].map((star) => ( // cria um componente FaStar para cada número
+            <FaStar
+              key={star}
+              size={30}
+              color={star <= rating ? "#ffc107" : "#e4e5e9"} // amarelo se selecionada, cinza se não
+              onClick={() => setRating(star)} // define a nota ao clicar
+              style={{ cursor: "pointer" }}
+              data-testid={`star-${star}`} 
+            />
+          ))}
+        </div>
+
+        {/* Campo de comentário */}
+        <textarea
+          data-testid="product-detail-evaluation"
+          value={evaluation} // esse estado controla o campo
+          onChange={(e) => setEvaluation(e.target.value)} // atualiza o estado conforme digita
+          placeholder="Escreva seu comentário (opcional)"
+        />
+
+        <button type="submit">Enviar avaliação</button>
+      </form>
+
+      {/* Exibir avaliações existentes */}
+      <div>
+        <h3>Avaliações:</h3>
+        {reviews.length === 0 ? (
+          <p>Nenhuma avaliação ainda.</p>
+        ) : (
+          reviews.map((r, index) => (
+            <div key={index}>
+              <p>Nota: {r.rating}</p>
+              {r.comment && <p>Comentário: {r.comment}</p>}
+            </div>
+          ))
+        )}
+      </div>
 
       <Link
         to="/carrinho"
