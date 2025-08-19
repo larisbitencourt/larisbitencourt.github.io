@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom"; // Navegar nas páginas usando o v5, o react v6 usa o navigate
 import PropTypes from "prop-types"; // Validar as props ue o componente recebe
+import './Checkout.css'
 
 export default function Checkout({ cartItems, clearCart }) {
   const history = useHistory(); // Cria uma instância do history, que permite navegar para outra rota

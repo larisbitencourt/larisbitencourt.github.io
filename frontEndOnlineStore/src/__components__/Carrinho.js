@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Checkout from "./Checkout";
+import './Carrinho.css';
+
 
 function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart }) {
   const [finalizando, setFinalizando] = useState(false); // controla se o Checkout está aberto, quando true renderiza <Checkout>

@@ -7,7 +7,7 @@ import Cards from "./__components__/Cards";
 import Detalhes from "./__components__/Detalhes";
 import categoriesMock from "./__mocks__/categories";
 import * as api from "./services/api";
-import "./App.css";
+// import "./App.css";
 
 
 function App() {
