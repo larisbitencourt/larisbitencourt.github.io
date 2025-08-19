@@ -1,29 +1,39 @@
 import React, { useState } from "react";
+import Checkout from "./Checkout";
 
 function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart }) {
-  if (carrinho.length === 0)
-    return <p data-testid="shopping-cart-empty-message">O carrinho está vazio</p>;
+  const [finalizando, setFinalizando] = useState(false); // controla se o Checkout está aberto, quando true renderiza <Checkout>
 
-  // Agrupa produtos iguais e adiciona a quantidade
-  // const produtosCarrinho = carrinho.reduce((acc, item) => {
-  //   const exist = acc.find((i) => i.id === item.id); // procura se existe um produto com esse id
-  //   if (exist) {
-  //     exist.quantity += 1; // se existe, aumenta 1
-  //   } else {
-  //     acc.push({ ...item, quantity: 1 }); // se não existe, adiciona esse produto com o valor de 1
-  //   }
-  //   return acc;
-  // }, []);
+  if (carrinho.length === 0)
+    return <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>;
 
   const produtosCarrinho = carrinho;
 
-
-  // somar total do carrinho
-
-    const total = produtosCarrinho.reduce(
+  // soma total do carrinho
+  const total = produtosCarrinho.reduce(
     (sum, item) => sum + item.price * item.quantity,
     0
   );
+
+  // função para limpar carrinho ao finalizar
+  const clearCart = () => {
+    
+    
+    carrinho.forEach(item => removeFromCart(item.id));
+  };
+
+  // se finalizando, mostra o Checkout
+  if (finalizando) {
+    return (
+      <Checkout
+        cartItems={produtosCarrinho} // Passa como props para Checkout 
+        clearCart={() => {
+          clearCart();
+          setFinalizando(false); // Volta para carrinho vazio ou página inicial
+        }}
+      />
+    );
+  }
 
   return (
     <div>
@@ -36,7 +46,7 @@ function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart
               {item.quantity}
             </span>
             <div>
-               <button
+              <button
                 data-testid="product-increase-quantity"
                 onClick={() => increaseQuantity(item.id)}
               >
@@ -55,13 +65,17 @@ function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart
               >
                 X
               </button>
-
             </div>
           </li>
         ))}
       </ul>
       <h3>Total: R$ {total.toFixed(2)}</h3>
-      <button data-testid="checkout-button">Finalizar Compra</button>
+      <button
+        data-testid="checkout-products"
+        onClick={() => setFinalizando(true)} // Altera o estado para true para renderizar Checkout
+      >
+        Finalizar Compra
+      </button>
     </div>
   );
 }
