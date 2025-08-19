@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from 'react';
 import { useHistory } from "react-router-dom";
-import * as api from "../services/api";
-import Detalhes from "./Detalhes.js";
-import Carrinho from "./Carrinho.js";
+import "./Cards.css";
 
 // o componente home faz a chamada API, que gerencia o estado da busca e passa para Cards via props
 // No React Router v5, navegação programática é feita com useHistory e não useNavigate (esse é v6)
@@ -15,29 +13,31 @@ function Cards({ products, carrinho, setCarrinho, handleAddToCart }) {
   }
 
   return (
-    <section className="card-body">
+    <section className="card-body cards-container">
       {products.map((product) => (
         <div
           key={product.id}
-          className="card"
+          className="card card-item"
           data-testid="product"
           onClick={() => history.push(`/detalhes/${product.id}`)}
         >
-          <h1>{product.title}</h1>
+          <h1 className="card-title">{product.title}</h1>
           <img
             data-testid="product-detail-link"
+            className="card-img"
             src={product.thumbnail || product.image} // Usa thumbnail (teste) ou image (Fake Store)
             alt={`Imagem de ${product.title}`}
             width={150}
           />
-          <h2>{`R$ ${product.price}`}</h2>
+          <h2 className="card-price">{`R$ ${product.price}`}</h2>
 
           <button
             data-testid="product-add-to-cart"
+            className="card-btn"
             onClick={(e) => {
               e.stopPropagation(); // impede que o clique suba para a div
               // setCarrinho((prev) => [...prev, product]);
-               handleAddToCart(product);
+              handleAddToCart(product);
             }}
           >
             Adicionar ao carrinho
@@ -51,23 +51,3 @@ function Cards({ products, carrinho, setCarrinho, handleAddToCart }) {
 // para cada produto, cria uma div com nome, imagem e preço
 
 export default Cards;
-
-// Antes no requisito 4:
-
-// const [products, setProducts] = useState([]);
-
-// useEffect(() => {
-//   const fetchProducts = async () => {
-//     const response = await api.getProductsFromCategoryAndQuery('', query); // nenhuma categoria, query: termo de busca digitado
-
-//      if (response.results) {
-//       setProducts(response.results); // para o teste
-//     } else {
-//       setProducts(response); // Fake Store API já retorna um array,  atualiza o estado com os produtos retornados
-//     }
-//   };
-
-//   if (query) {
-//     fetchProducts();  // so será chamada se query não for vazia
-//   }
-// }, [query]); // será executado sempre que o query mudar

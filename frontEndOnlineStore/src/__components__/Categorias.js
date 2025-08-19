@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './Categorias.css'
 
 function Categorias({ categories, onCategorySelect }) { // recebe a props do App e callback para avisar mudança
   const [selected, setSelected] = useState(null); 

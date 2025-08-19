@@ -1,0 +1,80 @@
+/* Container principal da Home */
+.home-container {
+  display: flex;
+  width: 100%;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background-color: #fff;
+  position: relative;
+}
+
+/* Sidebar das categorias */
+.aside-category {
+  width: 220px;
+  padding: 20px;
+  border-right: 1px solid #eee;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: #f9f9f9;
+}
+
+/* Título das categorias */
+.aside-category p {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Container principal de busca e cards */
+.search-container {
+  flex: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* Barra de busca */
+.search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 12px 16px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 16px;
+}
+
+/* Botão buscar */
+.search-container button {
+  margin-top: 10px;
+  width: 120px;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.search-container button:hover {
+  background-color: #444;
+}
+
+/* Mensagem inicial */
+.home-container p[data-testid="home-initial-message"] {
+  margin-top: 20px;
+  color: #666;
+  font-size: 14px;
+}
+
+/* Ícone do carrinho */
+.cart-icon {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 28px;
+  color: #000;
+  cursor: pointer;
+}

@@ -4,6 +4,7 @@ import Categorias from "./Categorias";
 import Cards from "./Cards";
 import categoriesMock from "../__mocks__/categories";
 import * as api from "../services/api";
+import './Home.css'
 
 
 
