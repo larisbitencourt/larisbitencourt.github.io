@@ -1,13 +1,19 @@
 import React, { useState } from "react";
 import Checkout from "./Checkout";
-import './Carrinho.css';
+import "./Carrinho.css";
 
-
-function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart }) {
+function Carrinho({
+  carrinho,
+  increaseQuantity,
+  decreaseQuantity,
+  removeFromCart,
+}) {
   const [finalizando, setFinalizando] = useState(false); // controla se o Checkout está aberto, quando true renderiza <Checkout>
 
   if (carrinho.length === 0)
-    return <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>;
+    return (
+      <p data-testid="shopping-cart-empty-message">Seu carrinho está vazio</p>
+    );
 
   const produtosCarrinho = carrinho;
 
@@ -19,16 +25,14 @@ function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart
 
   // função para limpar carrinho ao finalizar
   const clearCart = () => {
-    
-    
-    carrinho.forEach(item => removeFromCart(item.id));
+    carrinho.forEach((item) => removeFromCart(item.id));
   };
 
   // se finalizando, mostra o Checkout
   if (finalizando) {
     return (
       <Checkout
-        cartItems={produtosCarrinho} // Passa como props para Checkout 
+        cartItems={produtosCarrinho} // Passa como props para Checkout
         clearCart={() => {
           clearCart();
           setFinalizando(false); // Volta para carrinho vazio ou página inicial
@@ -42,11 +46,17 @@ function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart
       <ul>
         {produtosCarrinho.map((item) => (
           <li key={item.id}>
-            <span data-testid="shopping-cart-product-name">{item.title}</span> - 
-            R$ {item.price} - 
-            <span data-testid="shopping-cart-product-quantity">
-              {item.quantity}
-            </span>
+            <div>
+              <span data-testid="shopping-cart-product-name">{item.title}</span>
+            </div>
+            <div className="item-price">
+              <span>R$ {item.price} </span>
+            </div>
+            <div className="item-quantity">
+              <span data-testid="shopping-cart-product-quantity">
+                {item.quantity}
+              </span>
+            </div>
             <div>
               <button
                 data-testid="product-increase-quantity"
@@ -75,6 +85,7 @@ function Carrinho({ carrinho, increaseQuantity, decreaseQuantity, removeFromCart
       <button
         data-testid="checkout-products"
         onClick={() => setFinalizando(true)} // Altera o estado para true para renderizar Checkout
+        className="button-final"
       >
         Finalizar Compra
       </button>
