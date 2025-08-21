@@ -1,7 +1,18 @@
 .categories-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10px; /* 10px de espaço entre cada label */
+  margin-bottom: 20px;
+  font-family:  source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;;
+
+}
+
+.categories-container p {
+  font-size: 22px;
+  font-weight: bold;
+  
+
 }
 
 /* Labels de categoria */
@@ -9,11 +20,12 @@
   display: flex;
   align-items: center;
   cursor: pointer;
-  user-select: none;
+  user-select: none; /* impede que o texto seja selecionado ao clicar, só seleciona o rádio. */
   gap: 10px;
+  font-family:  source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-/* Esconde radio padrão */
+/* Esconde radio padrão do html */
 .category-radio {
   display: none;
 }
@@ -26,11 +38,13 @@
   border-radius: 50%;
   position: relative;
   transition: border-color 0.3s;
+  /* adiciona uma animação suave de 0,3s quando a cor da borda muda de cinza para preto*/
 }
 
 /* Bolinha interna quando selecionado */
+
 .category-radio:checked + .custom-radio::after {
-  content: '';
+  content: "";
   position: absolute;
   top: 3px;
   left: 3px;
@@ -38,8 +52,14 @@
   height: 10px;
   background-color: #000;
   border-radius: 50%;
+
+/* O checked erifica o input que está marcado */
+/* O + estiliza o próximo elemento irmão com a classe .custom-radio. que seria o <span>, porque o input esta com display none para tirar o estilo próprio do navegador, isso tudo para desenhar a bolinha como quiser*/
+/* O after cria um elemento virtual que não existe no HTML, mas você pode estilizar como se fosse um filho do elemento selecionado, que no caso é o irmão do input */
+/* Ao usar o after é obrigatório usar o content:'' para "criar" esse elemento virtual*/
 }
 
 .category-label:hover .custom-radio {
   border-color: #000;
+  /* “Quando o .category-label estiver em hover, estilize qualquer .custom-radio que estiver dentro dele.” */
 }

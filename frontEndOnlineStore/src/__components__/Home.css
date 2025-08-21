@@ -2,10 +2,10 @@
 .home-container {
   display: flex;
   width: 100%;
-  min-height: 100vh;
+  min-height: 100vh; /* altura mínima igual a 100% da altura da tela */
   font-family: Arial, sans-serif;
   background-color: #fff;
-  position: relative;
+  position: relative; /* permite posicionar elementos absolutos (como o ícone do carrinho) em relação a este container */
 }
 
 /* Sidebar das categorias */
@@ -15,7 +15,7 @@
   border-right: 1px solid #eee;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 10px;  /* espaço de 10px entre cada item */
   background-color: #f9f9f9;
 }
 
@@ -24,6 +24,7 @@
   font-weight: bold;
   margin-bottom: 10px;
 }
+
 
 /* Container principal de busca e cards */
 .search-container {
@@ -56,22 +57,24 @@
   color: #fff;
   cursor: pointer;
   font-weight: bold;
+  font-size: 15px;
 }
 
-.search-container button:hover {
+.search-container button:hover { 
   background-color: #444;
+  /* o hover muda o elemento "ao passar o mouse" */
 }
 
 /* Mensagem inicial */
 .home-container p[data-testid="home-initial-message"] {
   margin-top: 20px;
   color: #666;
-  font-size: 14px;
+  font-size: 16px;
 }
 
 /* Ícone do carrinho */
 .cart-icon {
-  position: absolute;
+  position: absolute; /* fixa em relação ao .home-container (que tem position: relative) */
   top: 20px;
   right: 20px;
   font-size: 28px;

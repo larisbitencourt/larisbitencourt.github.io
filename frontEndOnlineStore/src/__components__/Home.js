@@ -38,6 +38,7 @@ function Home({ carrinho, setCarrinho, handleAddToCart }) {
   };
 
   return (
+    <div className="home-container ">
     <div className="search-container">
       <Categorias
         className="aside-category"
@@ -83,6 +84,7 @@ function Home({ carrinho, setCarrinho, handleAddToCart }) {
       >
         🛒
       </Link>
+    </div>
     </div>
   );
 }
